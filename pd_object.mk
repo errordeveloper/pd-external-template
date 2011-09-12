@@ -2,56 +2,10 @@
 # For instructions on how to use this template, see:
 #  http://puredata.info/docs/developer/MakefileTemplate
 
-LIBRARY_NAME = template
-
-# add your .c source files, one object per file, to the SOURCES
-# variable, help files will be included automatically, and for GUI
-# objects, the matching .tcl file too
-SOURCES = mycobject.c
-
-# list all pd objects (i.e. myobject.pd) files here, and their helpfiles will
-# be included automatically
-PDOBJECTS = mypdobject.pd
-
-# example patches and related files, in the 'examples' subfolder
-EXAMPLES = bothtogether.pd
-
-# manuals and related files, in the 'manual' subfolder
-MANUAL = manual.txt
-
-# if you want to include any other files in the source and binary tarballs,
-# list them here.  This can be anything from header files, test patches,
-# documentation, etc.  README.txt and LICENSE.txt are required and therefore
-# automatically included
-EXTRA_DIST =
-
-
-#------------------------------------------------------------------------------#
-#
-# things you might need to edit if you are using other C libraries
-#
-#------------------------------------------------------------------------------#
-
-# -I"$(PD_INCLUDE)/pd" supports the header location for 0.43
-CFLAGS = -I../../modules/pd/include/ -Wall -W -g
-LDFLAGS =
-LIBS = -lzmq
-
-#------------------------------------------------------------------------------#
-#
-# you shouldn't need to edit anything below here, if we did it right :)
-#
-#------------------------------------------------------------------------------#
 
 CFLAGS += -DPD -DVERSION='"$(LIBRARY_VERSION)"'
 
 PD_INCLUDE = $(PD_PATH)/include
-
-# where to install the library, overridden below depending on platform
-prefix = /usr/local
-libdir = $(prefix)/lib
-pkglibdir = $(libdir)/pd-externals
-objectsdir = $(pkglibdir)
 
 INSTALL = install
 INSTALL_PROGRAM = $(INSTALL) -p -m 644
